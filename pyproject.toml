@@ -1,0 +1,64 @@
+[build-system]
+requires = ["hatchling>=1.27,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "bondbyisin"
+dynamic = ["version"]
+description = "Standalone Python client for the Bond by ISIN API."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{name = "Bond by ISIN"}]
+keywords = ["bonds", "isin", "fixed-income", "yield-curves", "financial-data"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Financial and Insurance Industry",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Typing :: Typed",
+]
+dependencies = ["requests>=2.32.4,<3"]
+
+[project.urls]
+Homepage = "https://bondbyisin.com"
+"API documentation" = "https://bondbyisin.com/api"
+"API access" = "https://bondbyisin.com/account"
+
+[project.optional-dependencies]
+dev = [
+    "build>=1.2,<2",
+    "hatchling>=1.27,<2",
+    "pytest>=8,<10",
+    "responses>=0.25,<1",
+    "ruff>=0.9,<1",
+    "twine>=6,<8",
+]
+
+[tool.hatch.version]
+path = "src/bondbyisin/_version.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/bondbyisin"]
+
+[tool.hatch.build.targets.sdist]
+include = ["src/", "tests/", "examples/", "docs/", "scripts/", ".github/", "pyproject.toml", "README.md", "LICENSE", "CHANGELOG.md", ".gitignore"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+
+[tool.ruff]
+target-version = "py310"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I"]
