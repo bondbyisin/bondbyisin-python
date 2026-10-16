@@ -1,0 +1,16 @@
+<!-- Ready to add to the API page after bondbyisin is published on PyPI. -->
+<section>
+  <h2>Python library</h2>
+  <p>Install the standalone Bond by ISIN client:</p>
+  <pre><code>python -m pip install bondbyisin</code></pre>
+  <pre><code>from bondbyisin import Client
+
+with Client() as client:  # Reads BOND_API_KEY from your environment.
+    matches = client.search("oracle")
+    bond = client.bond("68389XBU8")
+    history = client.history("68389XBU8")</code></pre>
+  <p>These exact examples work without a key. Other securities, dates and
+    filters require an active API subscription. Get your key from
+    <a href="/account">your account</a>.</p>
+  <p><a href="https://pypi.org/project/bondbyisin/">Package and full usage guide</a></p>
+</section>
